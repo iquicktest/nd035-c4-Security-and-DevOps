@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.demo.model.persistence.Item;
-import org.springframework.stereotype.Repository;
 
 public interface ItemRepository extends JpaRepository<Item, Long> {
 	public List<Item> findByName(String name);
