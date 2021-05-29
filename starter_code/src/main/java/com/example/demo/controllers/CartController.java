@@ -2,6 +2,7 @@ package com.example.demo.controllers;
 
 import java.util.Optional;
 import java.util.stream.IntStream;
+import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,6 +22,7 @@ import com.example.demo.model.requests.ModifyCartRequest;
 
 @RestController
 @RequestMapping("/api/cart")
+@Slf4j
 public class CartController {
 	
 	@Autowired
@@ -38,6 +40,7 @@ public class CartController {
 		if(user == null) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
+
 		Optional<Item> item = itemRepository.findById(request.getItemId());
 		if(!item.isPresent()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
